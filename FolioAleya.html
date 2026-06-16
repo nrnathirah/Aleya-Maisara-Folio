@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor Aleya Maisara | Student Portfolio</title>
+  <style>
+    :root {
+      --blue-900: #12396f;
+      --blue-700: #1e63b6;
+      --blue-500: #2f8bea;
+      --blue-100: #eaf4ff;
+      --ink: #172033;
+      --muted: #5f6f86;
+      --line: #d9e7f7;
+      --white: #ffffff;
+      --mint: #18a999;
+      --coral: #ff7a59;
+      --shadow: 0 20px 55px rgba(18, 57, 111, 0.14);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--blue-900);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue-700), var(--mint));
+      border-radius: var(--radius);
+      box-shadow: 0 10px 24px rgba(30, 99, 182, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--blue-700);
+      background: var(--blue-100);
+      outline: none;
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 12% 24%, rgba(24, 169, 153, 0.12), transparent 28%),
+        linear-gradient(135deg, #f7fbff 0%, #ffffff 48%, #eaf4ff 100%);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--blue-700);
+      background: var(--white);
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 8px 26px rgba(18, 57, 111, 0.08);
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      max-width: 780px;
+      color: var(--blue-900);
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: var(--blue-700);
+      box-shadow: 0 14px 28px rgba(30, 99, 182, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--blue-900);
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .btn:hover,
+    .btn:focus {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .fact {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .fact strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--blue-900);
+      font-size: 0.98rem;
+    }
+
+    .profile-panel {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 470px;
+    }
+
+    .profile-card {
+      width: min(100%, 390px);
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-image {
+      position: relative;
+      width: min(100%, 290px);
+      aspect-ratio: 1;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 34%, #ffffff 0 18%, transparent 19%),
+        linear-gradient(135deg, #1e63b6 0%, #2f8bea 45%, #18a999 100%);
+      border: 10px solid var(--white);
+      box-shadow: 0 18px 42px rgba(18, 57, 111, 0.24);
+    }
+
+    .profile-image::before {
+      content: "";
+      position: absolute;
+      width: 48%;
+      height: 48%;
+      bottom: 10%;
+      border-radius: 48% 48% 36% 36%;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .profile-image span {
+      position: relative;
+      z-index: 1;
+      margin-top: 58%;
+      color: var(--blue-900);
+      font-size: clamp(2.7rem, 8vw, 4.3rem);
+      font-weight: 900;
+    }
+
+    .profile-card h2 {
+      margin: 0;
+      color: var(--blue-900);
+      font-size: 1.35rem;
+      text-align: center;
+    }
+
+    .profile-card p {
+      margin: 8px auto 0;
+      max-width: 300px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading span {
+      color: var(--blue-700);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0 8px;
+      color: var(--blue-900);
+      font-size: clamp(1.85rem, 4vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .about-copy,
+    .info-list,
+    .contact-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 14px 40px rgba(18, 57, 111, 0.08);
+    }
+
+    .about-copy {
+      padding: 28px;
+    }
+
+    .about-copy p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-list {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: #f8fbff;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: var(--blue-700);
+      background: var(--blue-100);
+      border-radius: var(--radius);
+      flex: 0 0 auto;
+    }
+
+    .icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info-item small,
+    .skill-card small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--blue-900);
+      font-size: 1rem;
+    }
+
+    .skills {
+      background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      min-height: 210px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 14px 36px rgba(18, 57, 111, 0.08);
+    }
+
+    .skill-card h3 {
+      margin: 18px 0 8px;
+      color: var(--blue-900);
+      font-size: 1.12rem;
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact {
+      background: var(--blue-900);
+      color: var(--white);
+    }
+
+    .contact .section-heading h2,
+    .contact .section-heading p {
+      color: var(--white);
+    }
+
+    .contact .section-heading span {
+      color: #9ed7ff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      padding: 24px;
+      color: var(--ink);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-note {
+      min-height: 100%;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(47, 139, 234, 0.34), rgba(24, 169, 153, 0.28));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .contact-note h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+    }
+
+    .contact-note p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    footer {
+      padding: 22px 16px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--white);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding-top: 42px;
+        gap: 28px;
+      }
+
+      .profile-panel {
+        min-height: auto;
+      }
+
+      .quick-facts,
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links a {
+        padding: 8px 9px;
+        font-size: 0.9rem;
+      }
+
+      .hero-inner,
+      .section-inner,
+      .nav {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .quick-facts,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card,
+      .about-copy,
+      .contact-panel,
+      .contact-note {
+        padding: 20px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Noor Aleya Maisara home">
+        <span class="brand-mark">AM</span>
+        <span>Aleya Maisara</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L12 3z"/></svg>
+            </span>
+            Student Portfolio
+          </p>
+          <h1 id="hero-title">Noor Aleya Maisara Binti Mohd Rafizi</h1>
+          <p class="hero-copy">
+            A student from SMK Seri Duyong with a creative eye for fashion, a love for English, and an ambition to grow into a confident future ICT professional.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">
+              <span aria-hidden="true">Contact Me</span>
+            </a>
+            <a class="btn btn-secondary" href="#skills">
+              <span aria-hidden="true">View Skills</span>
+            </a>
+          </div>
+          <div class="quick-facts" aria-label="Portfolio highlights">
+            <div class="fact">
+              <span>School</span>
+              <strong>SMK Seri Duyong</strong>
+            </div>
+            <div class="fact">
+              <span>Dream Career</span>
+              <strong>Fashion Designer</strong>
+            </div>
+            <div class="fact">
+              <span>Favourite Subject</span>
+              <strong>English</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-panel" aria-label="Profile image placeholder">
+          <div class="profile-card">
+            <div class="profile-image" role="img" aria-label="Profile image placeholder with initials AM">
+              <span>AM</span>
+            </div>
+            <h2>Creative Student</h2>
+            <p>Blending style, communication, and digital confidence for a bright future.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <span>About Me</span>
+          <h2 id="about-title">A curious learner with creative goals.</h2>
+          <p>My portfolio introduces who I am, what I enjoy, and the skills I am building as a student.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              My name is Noor Aleya Maisara Binti Mohd Rafizi, and I study at SMK Seri Duyong. I enjoy learning new things, expressing ideas clearly, and improving myself step by step.
+            </p>
+            <p>
+              My dream career is to become a fashion designer. I am inspired by creativity, style, and the way design can help people show confidence. I also want to build ICT skills because technology is important in modern design, communication, and business.
+            </p>
+            <p>
+              In my free time, I like reading books. Reading helps me learn new vocabulary, understand different ideas, and become better at English, my favourite subject.
+            </p>
+          </div>
+
+          <div class="info-list" aria-label="Personal details">
+            <div class="info-item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3H20v16H6.8A2.8 2.8 0 0 0 4 21.8"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
+              </span>
+              <div>
+                <small>Hobby</small>
+                <strong>Reading Books</strong>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M7 5v14"/><path d="M17 5v14"/><path d="M4 19h16"/><path d="M9 9h6"/><path d="M9 13h6"/></svg>
+              </span>
+              <div>
+                <small>School</small>
+                <strong>SMK Seri Duyong</strong>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3c2.7 3.3 6 4.3 9 4.5-.4 6.2-3.2 10.6-9 13.5C6.2 18.1 3.4 13.7 3 7.5 6 7.3 9.3 6.3 12 3z"/><path d="M9 12l2 2 4-4"/></svg>
+              </span>
+              <div>
+                <small>Ambition</small>
+                <strong>Fashion Designer</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <span>Skills</span>
+          <h2 id="skills-title">Student skills for creativity and ICT.</h2>
+          <p>These strengths support school projects, teamwork, digital learning, and future professional growth.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z"/></svg>
+            </span>
+            <h3>Creative Design</h3>
+            <p>Interest in fashion, color, style, and visual presentation.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
+            </span>
+            <h3>English Communication</h3>
+            <p>Enjoys reading and building strong vocabulary and writing confidence.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/><path d="M8 9h3"/><path d="M13 9h3"/></svg>
+            </span>
+            <h3>Digital Literacy</h3>
+            <p>Learning how technology can support design, research, and presentations.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+            </span>
+            <h3>Teamwork</h3>
+            <p>Ready to collaborate, share ideas, and contribute to group activities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <span>Contact</span>
+          <h2 id="contact-title">Let us connect.</h2>
+          <p>A simple contact section for school portfolio presentations and future opportunities.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-note">
+            <h3>Future-focused and ready to learn</h3>
+            <p>
+              I hope to keep improving my creativity, communication, and ICT skills so I can create meaningful work in the future.
+            </p>
+          </div>
+
+          <div class="contact-panel">
+            <div class="contact-list">
+              <div class="info-item">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+                </span>
+                <div>
+                  <small>Email</small>
+                  <strong>aleya.maisara@example.com</strong>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2z"/></svg>
+                </span>
+                <div>
+                  <small>Phone</small>
+                  <strong>+60 12-345 6789</strong>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <div>
+                  <small>Location</small>
+                  <strong>Melaka, Malaysia</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Noor Aleya Maisara Binti Mohd Rafizi. Student Portfolio.</p>
+  </footer>
+</body>
+</html>
